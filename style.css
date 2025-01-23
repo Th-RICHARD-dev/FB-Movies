@@ -1,0 +1,848 @@
+@font-face {
+    font-family: 'SF UI Display Ultralight';
+    src: local('SF UI Display Ultralight'), url('fonts/sf-ui-display-ultralight-58646b19bf205.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'SF UI Display Thin';
+    src: local('SF UI Display Thin'), url('fonts/sf-ui-display-thin-58646e9b26e8b.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'SF UI Display Light';
+    src: local('SF UI Display Light'), url('fonts/sf-ui-display-light-58646b33e0551.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'SF UI Display Medium';
+    src: local('SF UI Display Medium'), url('fonts/sf-ui-display-medium-58646be638f96.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'SF UI Display Semibold';
+    src: local('SF UI Display Semibold'), url('fonts/sf-ui-display-semibold-58646eddcae92.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'SF UI Display Bold';
+    src: local('SF UI Display Bold'), url('fonts/sf-ui-display-bold-58646a511e3d9.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'SF UI Display Heavy';
+    src: local('SF UI Display Heavy'), url('fonts/sf-ui-display-heavy-586470160b9e5.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'SF UI Display Black';
+    src: local('SF UI Display Black'), url('fonts/sf-ui-display-black-58646a6b80d5a.woff') format('woff');
+}
+
+:root {
+    --black: #171717;
+    --grey: #2C2C2C;
+    --light-grey: #E2E2E2;
+    --white: #F1F1F1;
+    --red: #DB4446;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    font-family: 'SF UI Display Medium';
+    text-decoration: none;
+    color: var(--white);
+}
+
+body {
+    height: 100%;
+    background-color: var(--black);
+    overflow: auto;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+#header {
+    width: 100%;
+    height: 70px;
+    position: fixed;
+    top: 0;
+    background-color: var(--grey);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+#header p {
+    font-family: 'SF UI Display Semibold';
+}
+
+.logo {
+    width: 50px;
+    height: 35px;
+    background-image: url('images/FB.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.links {
+    width: 500px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.searchbar {
+    font-family: 'SF UI Display Light';
+    all: unset;
+    width: 175px;
+    height: 30px;
+    background-color: var(--black);
+    color: var(--light-grey);
+    padding-left: 15px;
+    border-radius: 15px;
+
+    &::placeholder {
+        font-family: 'SF UI Display Light';
+        color: var(--light-grey);
+    }
+}
+
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration {
+    display: none;
+}
+
+.marquee {
+    z-index: 999;
+    position: fixed;
+    background-color: var(--black);
+    top: 70px;
+    width: 100%;
+    border-bottom: 1px solid var(--grey);
+    padding: 5px;
+    transition: transform 0.5s ease-out;
+}
+
+.marquee.hide {
+    transform: translateY(-100%);
+}
+
+.marquee-content {
+    display: inline;
+    font-size: .875em;
+    color: var(--red);
+    border: .5px solid var(--red);
+    padding: 2.5px 5px;
+    margin: 0 25px;
+    border-radius: 12.5px;
+    width: fit-content;
+    cursor: pointer;
+}
+
+.reset {
+    color: var(--light-grey);
+    cursor: pointer;
+    position: fixed;
+    top: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1001;
+    background-color: var(--black);
+    padding: 5px;
+    border-radius: 0 0 5px 5px;
+    display: none;
+}
+
+.search-result {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.no-result {
+    color: var(--grey);
+}
+
+.no-result-add {
+    color: var(--grey);
+    text-decoration: underline;
+}
+
+.top-movies {
+    color: var(--white);
+    display: flex;
+    justify-content: center;
+    padding: 5px;
+    margin-top: 150px;
+    margin-bottom: 15px;
+}
+
+.splide__slide {
+    width: 310px !important;
+    height: 420px !important;
+    cursor: pointer;
+}
+
+.splide__slide img {
+    border-radius: 15px;
+}
+
+#grid {
+    display: flex;
+    flex-wrap: wrap;
+    height: 500px;
+    gap: 5px;
+    justify-content: center;
+    align-items: center;
+    margin: 0 150px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    padding: 5px;
+
+    &::-webkit-scrollbar {
+        display: initial;
+        width: 7.5px;
+    }
+
+    &::-webkit-scrollbar-track {
+        background-color: var(--grey);
+        border-radius: 10px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background: var(--red);
+        border-radius: 10px;
+    }
+}
+
+.title {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.movies-title {
+    color: var(--white);
+    padding: 5px;
+    margin-top: 75px;
+    margin-bottom: 15px;
+}
+
+.filters {
+    display: flex;
+    margin-bottom: 5px;
+}
+
+.likes-filter, 
+.name-filter,
+.categories-filter {
+    font-size: 0.85em;
+    margin-left: 25px;
+    color: var(--red);
+    text-decoration: underline;
+    font-family: 'SF UI Display Thin';
+    letter-spacing: .75px;
+    cursor: pointer;
+}
+
+.movies-categories {
+    width: 175px;
+    height: auto;
+    color: var(--red);
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding: 10px 5px;
+    transition: .5s ease;
+    font-family: 'SF UI Display Light';
+}
+
+.movies-categories:hover {
+    transform: scale(1.05);
+}
+
+.movies-names {
+    font-size: 1em;
+    color: var(--white);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.movies-names,
+.movies-vignettes {
+    cursor: pointer;
+}
+
+.movies-vignettes {
+    border-radius: 10px;
+}
+
+.categories-names {
+    font-size: .75em;
+    color: var(--red);
+    border: .5px solid var(--red);
+    padding: 2.5px 5px;
+    border-radius: 12.5px;
+    width: fit-content;
+}
+
+.separator {
+    margin: 0 auto;
+    margin-top: 25px;
+    height: 1px;
+    width: 50%;
+    background-color: var(--grey);
+}
+
+.container {
+    width: 100%;
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    gap: 75px;
+    justify-content: center;
+    align-items: center;
+}
+
+.container .add-movie {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    cursor: pointer;
+}
+
+.container .add-movie h3 {
+    font-size: 1.5em;
+    text-align: center;
+}
+
+.container .add-movie .fa-circle-plus {
+    text-align: center;
+    font-size: 6.5rem;
+}
+
+.container .add-movie h3,
+.container .add-movie i {
+    cursor: pointer;
+    color: var(--grey);
+    transition: .5s ease;
+}
+
+.container .add-movie:hover h3,
+.container .add-movie:hover i {
+    color: var(--light-grey);
+}
+
+.container .update-movie p {
+    font-size: .75em;
+    font-family: 'SF UI Display Light';
+    color: var(--grey);
+}
+
+.container .update-movie p span {
+    cursor: pointer;
+    font-family: 'SF UI Display Light';
+    text-decoration: underline;
+    color: var(--grey);
+    transition: .5s ease;
+}
+
+.container .update-movie p span:hover {
+    color: var(--light-grey);
+}
+
+.container .remove-movie {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    cursor: pointer;
+}
+
+.container .remove-movie h3 {
+    font-size: 1.5em;
+    text-align: center;
+}
+
+.container .remove-movie .fa-circle-minus {
+    text-align: center;
+    font-size: 6.5rem;
+}
+
+.container .remove-movie h3,
+.container .remove-movie i {
+    cursor: pointer;
+    color: var(--grey);
+    transition: .5s ease;
+}
+
+.container .remove-movie:hover h3,
+.container .remove-movie:hover i {
+    color: var(--light-grey);
+}
+
+.container button {
+    background-color: var(--black);
+    color: var(--light-grey);
+    font-family: 'SF UI Display Light';
+    border: none;
+    width: 125px;
+    padding: 12.5px;
+    border-radius: 7.5px;
+    font-size: 1em;
+    cursor: pointer;
+}
+
+.container-2 button {
+    background-color: var(--black);
+    color: var(--light-grey);
+    font-family: 'SF UI Display Light';
+    border: none;
+    width: 125px;
+    padding: 12.5px;
+    border-radius: 7.5px;
+    font-size: 1em;
+    cursor: pointer;
+}
+
+.second-container {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    gap: 10%;
+}
+
+.add-modal {
+    display: none;
+    width: 90vw;
+    height: 80vh;
+    background-color: var(--grey);
+    border-radius: 25px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -45%);
+    z-index: 1000;
+}
+
+.close-add {
+    position: absolute;
+    color: var(--white);
+    font-size: 2em;
+    padding: 15px;
+    transition: .5s ease;
+}
+
+.close-add:hover {
+    color: var(--red);
+    cursor: pointer;
+}
+
+.update-modal {
+    display: none;
+    width: 90vw;
+    height: 80vh;
+    background-color: var(--grey);
+    border-radius: 25px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -45%);
+    z-index: 1000;
+}
+
+.close-update {
+    position: absolute;
+    color: var(--white);
+    font-size: 2em;
+    padding: 15px;
+    transition: .5s ease;
+}
+
+.close-update:hover {
+    color: var(--red);
+    cursor: pointer;
+}
+
+.remove-modal {
+    display: none;
+    width: 90vw;
+    height: 80vh;
+    background-color: var(--grey);
+    border-radius: 25px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -45%);
+    z-index: 1000;
+}
+
+.close-remove {
+    position: absolute;
+    color: var(--white);
+    font-size: 2em;
+    padding: 15px;
+    transition: .5s ease;
+}
+
+.close-remove:hover {
+    color: var(--red);
+    cursor: pointer;
+}
+
+.add-category-modal {
+    display: none;
+    width: 90vw;
+    height: 80vh;
+    background-color: var(--grey);
+    border-radius: 25px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -45%);
+    z-index: 1000;
+}
+
+.remove-category-modal {
+    display: none;
+    width: 90vw;
+    height: 80vh;
+    background-color: var(--grey);
+    border-radius: 25px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -45%);
+    z-index: 1000;
+}
+
+.update-category-modal {
+    display: none;
+    width: 90vw;
+    height: 80vh;
+    background-color: var(--grey);
+    border-radius: 25px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -45%);
+    z-index: 1000;
+}
+
+.add,
+.update,
+.remove,
+.add-cat,
+.remove-cat,
+.update-cat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    height: 100%;
+}
+
+.add input,
+.update input,
+.remove input,
+.add-cat input,
+.remove-cat input,
+.update-cat input {
+    font-family: 'SF UI Display Light';
+    all: unset;
+    width: 175px;
+    height: 30px;
+    background-color: #fff;
+    color: var(--black);
+    padding-left: 15px;
+    border-radius: 2.5px;
+
+    &::placeholder {
+        font-family: 'SF UI Display Light';
+        color: var(--black);
+    }
+}
+
+input#img,
+input#video {
+    font-family: 'SF UI Display Light';
+    all: unset;
+    width: 350px;
+    height: 30px;
+    background-color: #fff;
+    color: var(--black);
+    padding-left: 15px;
+    border-radius: 2.5px;
+}
+
+textarea {
+    font-family: 'SF UI Display Light';
+    all: unset;
+    background-color: #fff;
+    color: var(--black);
+    padding-left: 15px;
+    padding-top: 15px;
+    border-radius: 2.5px;
+    text-wrap: wrap;
+}
+
+.select2-container .select2-selection--single {
+    font-family: 'SF UI Display Light';
+    height: 30px;
+    width: 190px;
+    border-radius: 15px;
+    padding: 0 15px;
+    display: flex;
+    align-items: center;
+    border: none;
+    outline: none;
+    box-shadow: none;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__placeholder {
+    color: var(--light-grey);
+    font-family: 'SF UI Display Light';
+}
+
+.custom-dropdown .select2-results__option {
+    color: var(--black) !important;
+    padding: 8px 15px;
+    cursor: pointer;
+}
+
+.custom-dropdown .select2-results__option--highlighted {
+    background-color: var(--red) !important;
+    color: var(--black) !important;
+}
+
+.custom-dropdown .select2-results__option:focus {
+    outline: none;
+}
+
+.categories-title {
+    color: var(--white);
+    display: flex;
+    justify-content: center;
+    padding: 5px;
+    margin-top: 75px;
+    margin-bottom: 15px;
+}
+
+.container-2 {
+    width: 100%;
+    height: 75vh;
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    justify-content: center;
+    align-items: center;
+}
+
+.categories-list {
+    width: 80%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 50px;
+}
+
+.categories {
+    display: inline;
+    font-size: 1.15em;
+    color: var(--red);
+    border: .5px solid var(--red);
+    padding: 2.5px 5px;
+    border-radius: 12.5px;
+    width: fit-content;
+    height: fit-content;
+}
+
+.categories-more {
+    display: inline;
+    font-size: 1.15em;
+    color: var(--red);
+    border: .5px solid var(--red);
+    opacity: 50%;
+    padding: 2.5px 5px;
+    border-radius: 12.5px;
+    width: fit-content;
+    height: fit-content;
+    cursor: pointer;
+    transition: .5s ease;
+}
+
+.categories-more:hover {
+    opacity: 1;
+}
+
+.close-category-add {
+    position: absolute;
+    color: var(--white);
+    font-size: 2em;
+    padding: 15px;
+    transition: .5s ease;
+}
+
+.close-category-add:hover {
+    color: var(--red);
+    cursor: pointer;
+}
+
+.close-category-remove {
+    position: absolute;
+    color: var(--white);
+    font-size: 2em;
+    padding: 15px;
+    transition: .5s ease;
+}
+
+.close-category-remove:hover {
+    color: var(--red);
+    cursor: pointer;
+}
+
+.close-category-update {
+    position: absolute;
+    color: var(--white);
+    font-size: 2em;
+    padding: 15px;
+    transition: .5s ease;
+}
+
+.close-category-update:hover {
+    color: var(--red);
+    cursor: pointer;
+}
+
+.remove-category {
+    text-decoration: underline;
+    cursor: pointer;
+    margin-top: 50px;
+    color: var(--grey);
+}
+
+.update-category {
+    text-decoration: underline;
+    cursor: pointer;
+    margin-top: 5px;
+    color: var(--grey);
+}
+
+.existing {
+    color: var(--light-grey);
+}
+
+footer {
+    background-color: var(--grey);
+    color: var(--white);
+    text-align: center;
+    padding: 20px 10px;
+    margin-top: 20px;
+}
+
+footer a {
+    color: var(--white);
+    margin: 0 15px;
+    text-decoration: none;
+    font-size: 16px;
+    transition: .5s ease;
+}
+
+footer .social-media {
+    margin: 25px 0;
+}
+
+footer .social-media a {
+    margin: 0 10px;
+    font-size: 20px;
+}
+
+footer i {
+    color: var(--white);
+    transition: .5s ease;
+}
+
+footer a:hover, footer i:hover {
+    color: var(--red);
+}
+
+footer p {
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+
+@media screen and (max-width: 1050px) {
+
+    .splide__slide,
+    .splide__slide img {
+        width: 155px !important;
+        height: 210px !important;
+    }
+}
+
+@media screen and (max-width: 845px) {
+    .movies-categories {
+        width: 150px;
+        height: auto;
+    }
+}
+
+@media screen and (max-width: 770px) {
+    .movies-categories {
+        width: 100px;
+        height: auto;
+    }
+}
+
+@media screen and (max-width: 730px) {
+    #grid {
+        margin: 0 125px;
+    }
+
+    .fill {
+        display: none;
+    }
+
+    .categories-list {
+        gap: 25px;
+    }
+}
+
+@media screen and (max-width: 590px) {
+    #grid {
+        margin: 0 100px;
+    }
+
+    .links a {
+        display: none;
+    }
+
+    .links {
+        width: auto;
+    }
+}
+
+@media screen and (max-width: 520px) {
+    #grid {
+        margin: 0 50px;
+    }
+}
+
+@media screen and (max-width: 350px) {
+    #grid {
+        margin: 0 25px;
+    }
+}

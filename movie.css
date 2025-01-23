@@ -1,0 +1,290 @@
+@font-face {
+    font-family: 'SF UI Display Ultralight';
+    font-style: normal;
+    font-weight: normal;
+    src: local('SF UI Display Ultralight'), url('fonts/sf-ui-display-ultralight-58646b19bf205.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'SF UI Display Thin';
+    font-style: normal;
+    font-weight: normal;
+    src: local('SF UI Display Thin'), url('fonts/sf-ui-display-thin-58646e9b26e8b.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'SF UI Display Light';
+    font-style: normal;
+    font-weight: normal;
+    src: local('SF UI Display Light'), url('fonts/sf-ui-display-light-58646b33e0551.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'SF UI Display Medium';
+    font-style: normal;
+    font-weight: normal;
+    src: local('SF UI Display Medium'), url('fonts/sf-ui-display-medium-58646be638f96.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'SF UI Display Semibold';
+    font-style: normal;
+    font-weight: normal;
+    src: local('SF UI Display Semibold'), url('fonts/sf-ui-display-semibold-58646eddcae92.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'SF UI Display Bold';
+    font-style: normal;
+    font-weight: normal;
+    src: local('SF UI Display Bold'), url('fonts/sf-ui-display-bold-58646a511e3d9.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'SF UI Display Heavy';
+    font-style: normal;
+    font-weight: normal;
+    src: local('SF UI Display Heavy'), url('fonts/sf-ui-display-heavy-586470160b9e5.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'SF UI Display Black';
+    font-style: normal;
+    font-weight: normal;
+    src: local('SF UI Display Black'), url('fonts/sf-ui-display-black-58646a6b80d5a.woff') format('woff');
+}
+
+:root {
+    --black: #171717;
+    --grey: #2C2C2C;
+    --light-grey: #E2E2E2;
+    --white: #F1F1F1;
+    --red: #DB4446;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    font-family: 'SF UI Display Medium';
+    text-decoration: none;
+    color: var(--white);
+}
+
+body {
+    height: 200vh;
+    background-color: var(--black);
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+#header {
+    width: 100%;
+    height: 70px;
+    position: absolute;
+    top: 0;
+    background-color: var(--grey);
+    position: fixed;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.logo {
+    width: 50px;
+    height: 35px;
+    background-image: url('images/FB.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.links {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.links a {
+    display: none;
+}
+
+.searchbar {
+    font-family: 'SF UI Display Light';
+    all: unset;
+    width: 175px;
+    height: 30px;
+    background-color: var(--black);
+    color: var(--light-grey);
+    padding-left: 15px;
+    border-radius: 15px;
+
+    &::placeholder {
+        font-family: 'SF UI Display Light';
+        color: var(--light-grey);
+    }
+}
+
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration {
+    display: none;
+}
+
+#movies-details {
+    margin: 100px 150px 0 150px;
+}
+
+.movies-details-name {
+    color: var(--red);
+    text-align: center;
+    padding: 5px;
+    margin-bottom: 15px;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.movies-details-vignette {
+    width: 250px;
+    height: auto;
+    border-radius: 15px;
+}
+
+.categories-details-names, .movies-details-author {
+    margin-bottom: 10px;
+}
+
+.movies-details-description {
+    padding: 5px;
+    background-color: var(--grey);
+    border-radius: 7.5px;
+}
+
+.ratio-like-dislike {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 50px;
+}
+
+.like-dislike-visualization {
+    display: flex;
+    width: 100%;
+    height: 1px;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-top: 10px;
+}
+
+.like-bar {
+    background-color: var(--grey);
+    height: 100%;
+    transition: .5s ease;
+}
+
+.dislike-bar {
+    background-color: var(--grey);
+    height: 100%;
+    transition: .5s ease;
+}
+
+.ratings {
+    width: auto;
+    height: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-top: 10px;
+    padding-top: 15px;
+}
+
+.ratings i {
+    width: 15px;
+    height: 15px;
+    color: var(--grey);
+    transition: .5s ease;
+}
+
+.ratings i:hover {
+    color: var(--red);
+}
+
+.details-video-container {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    height: 0;
+    padding-bottom: 56.25%;
+    margin: 0 auto;
+}
+
+.details-video-container .movies-details-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+}
+
+@media screen and (max-width: 845px) {
+    .movies-details-vignette {
+        width: 200px;
+        height: auto;
+    }
+}
+
+@media screen and (max-width: 770px) {
+    .movies-details-vignette {
+        width: 150px;
+        height: auto;
+    }
+}
+
+@media screen and (max-width: 730px) {
+    .fill {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .movies-details-vignette {
+        width: 100px;
+        height: auto;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .container {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        margin-bottom: 25px;
+    }
+}
+
+@media screen and (max-width: 730px) {
+    #movies-details {
+        margin: 100px 125px 0 125px;
+    }
+}
+
+@media screen and (max-width: 590px) {
+    #movies-details {
+        margin: 100px 100px 0 100px;
+    }
+}
+
+@media screen and (max-width: 520px) {
+    #movies-details {
+        margin: 100px 50px 0 50px;
+    }
+}
